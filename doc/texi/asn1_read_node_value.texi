@@ -1,0 +1,15 @@
+@subheading asn1_read_node_value
+@anchor{asn1_read_node_value}
+@deftypefun {asn1_retCode} {asn1_read_node_value} (ASN1_TYPE @var{node}, ASN1_DATA_NODE* @var{data})
+@var{node}: pointer to a node.
+
+@var{data}: a pointer to an asn1_data_node struct.
+
+Returns the value a data node inside a ASN1_TYPE structure.
+The data returned should be handled as constant values.
+
+@strong{Returns:} @code{ASN1_SUCCESS} if the node exists.
+
+@strong{Since:} 2.14
+@end deftypefun
+
