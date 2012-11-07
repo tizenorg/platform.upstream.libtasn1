@@ -5,7 +5,7 @@ License:        LGPL-2.1+ and GPL-3.0
 Summary:        ASN
 Url:            http://ftp.gnu.org/gnu/libtasn1/
 Group:          Productivity/Networking/Security
-Source:         %{name}-%{version}.tar.bz2
+Source:         %{name}-%{version}.tar.gz
 Source99:       baselibs.conf
 BuildRequires:  info
 BuildRequires:  pkg-config
