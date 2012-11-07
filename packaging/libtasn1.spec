@@ -1,5 +1,5 @@
 Name:           libtasn1
-Version:        2.12
+Version:        2.14
 Release:        0
 License:        LGPL-2.1+ and GPL-3.0
 Summary:        ASN
@@ -9,7 +9,6 @@ Source:         %{name}-%{version}.tar.bz2
 Source99:       baselibs.conf
 BuildRequires:  info
 BuildRequires:  pkg-config
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 This is the ASN.1 library used in GNUTLS. More up to date information
