@@ -1,3 +1,6 @@
+* Mon Mar 18 2013 Anas Nashif <anas.nashif@intel.com> submit/trunk/20130318.194904@25b5187
+- require libtasn1-tools
+
 * Mon Mar 18 2013 Anas Nashif <anas.nashif@intel.com> upstream/2.14@2de8b50
 - Fixed package group
 

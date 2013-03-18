@@ -9,6 +9,8 @@ Source:         %{name}-%{version}.tar.gz
 Source99:       baselibs.conf
 BuildRequires:  info
 BuildRequires:  pkg-config
+Requires:       libtasn1-tools
+
 
 %description
 This is the ASN.1 library used in GNUTLS. More up to date information
