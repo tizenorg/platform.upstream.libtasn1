@@ -19,7 +19,7 @@ http://www.gnutls.org
 
 %package tools
 Summary:        ASN
-Group:          Development/Libraries
+Group:          Security/Crypto Libraries
 Requires:       %{name} = %{version}
 
 %description tools
