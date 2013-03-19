@@ -1,3 +1,6 @@
+* Tue Mar 19 2013 Anas Nashif <anas.nashif@intel.com> submit/trunk/20130318.233944@3936d87
+- tools belongs to Security/Crypto Libraries
+
 * Mon Mar 18 2013 Anas Nashif <anas.nashif@intel.com> submit/trunk/20130318.194904@25b5187
 - require libtasn1-tools
 
