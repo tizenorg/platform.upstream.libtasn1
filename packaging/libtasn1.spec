@@ -7,6 +7,7 @@ Url:            http://ftp.gnu.org/gnu/libtasn1/
 Group:          Security/Crypto Libraries
 Source:         %{name}-%{version}.tar.gz
 Source99:       baselibs.conf
+Source1001: 	libtasn1.manifest
 BuildRequires:  info
 BuildRequires:  pkg-config
 Requires:       libtasn1-tools
@@ -39,6 +40,7 @@ http://www.gnutls.org
 
 %prep
 %setup -q
+cp %{SOURCE1001} .
 
 %build
 %configure --disable-static
@@ -56,15 +58,18 @@ make %{?_smp_mflags}
 
 
 %files tools
+%manifest %{name}.manifest
 %defattr(-, root, root)
 %{_bindir}/*
 
 %files
+%manifest %{name}.manifest
 %defattr(-, root, root)
 %license COPYING COPYING.LIB
 %{_libdir}/*.so.*
 
 %files devel
+%manifest %{name}.manifest
 %defattr(-, root, root)
 %{_includedir}/*.h
 %{_libdir}/*.so
