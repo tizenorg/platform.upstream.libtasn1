@@ -10,6 +10,7 @@ Source99:       baselibs.conf
 Source1001: 	libtasn1.manifest
 BuildRequires:  info
 BuildRequires:  pkg-config
+BuildRequires:  makeinfo
 Requires:       libtasn1-tools
 
 
@@ -43,7 +44,7 @@ http://www.gnutls.org
 cp %{SOURCE1001} .
 
 %build
-%configure --disable-static
+%reconfigure --disable-static
 make %{?_smp_mflags}
 
 %install
