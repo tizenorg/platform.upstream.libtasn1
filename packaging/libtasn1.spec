@@ -1,18 +1,17 @@
 Name:           libtasn1
 Version:        4.0
 Release:        0
-License:        LGPL-2.1+ and GPL-3.0
+License:        LGPL-2.1+ or GPL-3.0
 Summary:        ASN
 Url:            http://ftp.gnu.org/gnu/libtasn1/
 Group:          Security/Crypto Libraries
 Source:         %{name}-%{version}.tar.gz
 Source99:       baselibs.conf
-Source1001: 	libtasn1.manifest
+Source1001:     libtasn1.manifest
 BuildRequires:  info
 BuildRequires:  pkg-config
 BuildRequires:  makeinfo
-Requires:       libtasn1-tools
-
+BuildRequires:  help2man
 
 %description
 This is the ASN.1 library used in GNUTLS. More up to date information
@@ -44,8 +43,9 @@ http://www.gnutls.org
 cp %{SOURCE1001} .
 
 %build
+touch ChangeLog
 %reconfigure --disable-static
-make %{?_smp_mflags}
+%__make %{?_smp_mflags}
 
 %install
 %make_install
@@ -54,9 +54,7 @@ make %{?_smp_mflags}
 
 %postun  -p /sbin/ldconfig
 
-
 %docs_package
-
 
 %files tools
 %manifest %{name}.manifest
@@ -75,5 +73,3 @@ make %{?_smp_mflags}
 %{_includedir}/*.h
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/libtasn1.pc
-
-%changelog
