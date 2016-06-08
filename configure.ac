@@ -17,7 +17,7 @@ dnl Process this file with autoconf to produce a configure script.
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 AC_PREREQ([2.61])
-AC_INIT([GNU Libtasn1],[4.0],[help-libtasn1@gnu.org])
+AC_INIT([GNU Libtasn1],[4.8],[help-libtasn1@gnu.org])
 AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_HEADERS(config.h)
@@ -28,14 +28,19 @@ AM_SILENT_RULES([yes])
 # Interfaces changed/added/removed:   CURRENT++       REVISION=0
 # Interfaces added:                             AGE++
 # Interfaces removed:                           AGE=0
-AC_SUBST(LT_CURRENT, 9)
-AC_SUBST(LT_REVISION, 0)
-AC_SUBST(LT_AGE, 3)
+AC_SUBST(LT_CURRENT, 11)
+AC_SUBST(LT_REVISION, 2)
+AC_SUBST(LT_AGE, 5)
 
 AC_PROG_CC
 gl_EARLY
 lgl_EARLY
 AC_PROG_YACC
+
+AC_ARG_ENABLE(doc,
+  AS_HELP_STRING([--disable-doc], [don't generate any documentation]),
+    enable_doc=$enableval, enable_doc=yes)
+AM_CONDITIONAL(ENABLE_DOC, test "$enable_doc" != "no")
 
 dnl Checks for programs.
 AM_MISSING_PROG(HELP2MAN, help2man, $missing_dir)

@@ -1,5 +1,5 @@
 Name:           libtasn1
-Version:        4.0
+Version:        4.8
 Release:        0
 License:        LGPL-2.1+ or GPL-3.0+
 Summary:        ASN
