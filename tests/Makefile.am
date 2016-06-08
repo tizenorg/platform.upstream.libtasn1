@@ -23,23 +23,44 @@ AM_LDFLAGS = -no-install
 LDADD = ../lib/libtasn1.la ../gl/libgnu.la
 
 EXTRA_DIST = Test_parser.asn Test_tree.asn Test_tree_asn1_tab.c	\
-	Test_encoding.asn pkix.asn TestIndef.p12 choice.asn coding-decoding2.asn
+	Test_encoding.asn pkix.asn TestIndef.p12 choice.asn coding-decoding2.asn \
+	TestIndef2.p12 TestIndef3.der TestCertOctetOverflow.der \
+	libtasn1.supp ocsp-basic-response.der \
+	invalid-x509/id-000000.der invalid-x509/id-000001.der \
+	invalid-x509/id-000002.der invalid-x509/id-000003.der \
+	invalid-x509/id-000004.der invalid-x509/id-000005.der \
+	invalid-x509/id-000006.der invalid-x509/id-000007.der \
+	invalid-x509/id-000008.der invalid-x509/id-000009.der \
+	invalid-x509/id-000010.der invalid-x509/id-000011.der \
+	invalid-x509/id-000012.der invalid-x509/id-000013.der \
+	invalid-x509/id-000014.der invalid-x509/id-000015.der \
+	invalid-x509/id-000016.der invalid-x509/id-000017.der \
+	invalid-x509/id-000018.der invalid-x509/id-000019.der \
+	invalid-x509/id-000020.der invalid-x509/id-000021.der \
+	invalid-x509/id-000022.der invalid-x509/id-000023.der \
+	invalid-x509/id-000024.der invalid-x509/id-000025.der \
+	invalid-x509/id-000026.der invalid-x509/id-000027.der \
+	invalid-x509/id-000028.der invalid-x509/id-000029.der \
+	invalid-x509/id-000030.der invalid-x509/id-000031.der \
+	invalid-x509/id-000032.der invalid-x509/id-000033.der \
+	invalid-x509/id-000034.der invalid-x509/id-000035.der
 
 # For crlf.
-EXTRA_DIST += crlf.cer crl.der
-dist_check_SCRIPTS = crlf benchmark
-
-dist_check_SCRIPTS += threadsafety
+EXTRA_DIST += crlf.cer crl.der ocsp.der
+dist_check_SCRIPTS = crlf benchmark threadsafety decoding decoding-invalid-x509
 
 MOSTLYCLEANFILES = Test_parser_ERROR.asn
 
 check_PROGRAMS = Test_parser Test_tree Test_encoding Test_indefinite \
 	Test_errors Test_simple Test_overflow Test_strings Test_choice \
-	Test_encdec copynode coding-decoding2
+	Test_encdec copynode coding-decoding2 strict-der Test_choice_ocsp \
+	ocsp-basic-response octet-string
 
 TESTS = Test_parser Test_tree Test_encoding Test_indefinite	\
 	Test_errors Test_simple Test_overflow crlf threadsafety \
-	Test_strings Test_choice Test_encdec copynode coding-decoding2
+	Test_strings Test_choice Test_encdec copynode coding-decoding2 \
+	strict-der Test_choice_ocsp decoding decoding-invalid-x509 \
+	ocsp-basic-response octet-string
 
 TESTS_ENVIRONMENT = \
 	ASN1PARSER=$(srcdir)/Test_parser.asn \
@@ -49,7 +70,13 @@ TESTS_ENVIRONMENT = \
 	ASN1PKIX=$(srcdir)/pkix.asn \
 	ASN1CRLDER=$(srcdir)/crl.der \
 	ASN1INDEF=$(srcdir)/TestIndef.p12 \
+	ASN1INDEF2=$(srcdir)/TestIndef2.p12 \
+	ASN1INDEF3=$(srcdir)/TestIndef3.der \
 	ASN1ENCODING=$(srcdir)/Test_encoding.asn \
+	ASN1CHOICE_OCSP=$(srcdir)/pkix.asn \
+	ASN1CHOICE_OCSP_DATA=$(srcdir)/ocsp.der \
+	ASN1_RESPONSE_OCSP_DATA=$(srcdir)/ocsp-basic-response.der \
 	THREADSAFETY_FILES=`find $(top_srcdir)/lib -name \*.c` \
 	EXEEXT=$(EXEEXT) \
+	LSAN_OPTIONS=suppressions=libtasn1.supp \
 	$(VALGRIND)

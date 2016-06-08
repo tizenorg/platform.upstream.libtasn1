@@ -1,7 +1,50 @@
 GNU Libtasn1 NEWS                                     -*- outline -*-
 
+* Noteworthy changes in release 4.8 (released 2016-04-11) [stable]
+- Fixes to avoid reliance on C undefined behavior.
+- Fixes to avoid an infinite recursion when decoding without
+  the ASN1_DECODE_FLAG_STRICT_DER flag. Reported by Pascal Cuoq.
+- Combined all the BER octet string decoding functions to a single
+  one based on asn1_decode_simple_ber().
+
+* Noteworthy changes in release 4.7 (released 2015-09-14) [stable]
+- Fixed regression introduced in the decoding of multi-byte tags
+  fix.
+
+* Noteworthy changes in release 4.6 (released 2015-09-05) [stable]
+- Allow decoding OCTET STRINGs with multi-byte tags.
+- API and ABI changes since last version:
+  asn1_get_object_id_der: New function
+
+* Noteworthy changes in release 4.5 (released 2015-04-29) [stable]
+- Corrected an invalid memory access in octet string decoding.
+  Reported by Hanno Böck.
+
+* Noteworthy changes in release 4.4 (released 2015-03-29) [stable]
+- Corrected a two-byte stack overflow in asn1_der_decoding. Reported
+  by Hanno Böck.
+
+* Noteworthy changes in release 4.3 (released 2015-03-09) [stable]
+- Added asn1_decode_simple_ber()
+
+* Noteworthy changes in release 4.2 (released 2014-09-15) [stable]
+- Added sanity checks in the decoding of time when
+  ASN1_DECODE_FLAG_STRICT_DER is used.
+- Fixes in the decoding of OCTET STRING when close to the end
+  of the structure.
+
+* Noteworthy changes in release 4.1 (released 2014-08-23) [stable]
+- Corrected indefinite tag check in ANY constructions. That allows
+  the decoding of BER-encoded structures that contain indefinite
+  encoding within an ANY element.
+- Added DER decoding flag ASN1_DECODE_FLAG_STRICT_DER. Over the
+  years BER functionality was added to the decoder and this flag
+  provides the way to disable it.
+- API and ABI changes since last version:
+  ASN1_DECODE_FLAG_STRICT_DER: New definition
+
 * Noteworthy changes in release 4.0 (released 2014-06-26) [stable]
-- optimized asn1_der_decoding_startEnd(). It no longer requires the
+- Optimized asn1_der_decoding_startEnd(). It no longer requires the
   additional decoding step.
 - asn1_read_value() understands the ?CURRENT keyword, which can be used
   to indicate the current element of a sequence, when the provided node
